@@ -1,12 +1,12 @@
-#include <iostream>
-#include <string>
+#include "mainwindow.h"
 
+#include <QApplication>
 
-using namespace std;
-
-int main {
-
-cout << "Hello world!" << endl;
-
-return 0;
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
+    w.setFixedSize(820,490);
+    return a.exec();
 }
