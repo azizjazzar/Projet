@@ -1,5 +1,7 @@
 #include "client.h"
 #include "connection.h"
+#include <QMessageBox>
+
 //constructeurs
 Client::Client()
 {
@@ -78,14 +80,43 @@ this->date_nais=date_nais;
 //crud
 bool Client::ajouter()
 {
-QSqlQuery query(QSqlDatabase::database("test-db"));
-query.prepare("insert into client (id,nom,prenom,genre,adresse,datenaiss) values (:id,:nom,:prenom,:genre,:adresse,:datenaiss)");
+QSqlQuery query;
+query.prepare("insert into client (id,nom,prenom,genre,adresse,datenaiss) values (:id,:nom,:prenom,:genre,:adresse,TO_DATE(:datenaiss, 'DD/MM/YYYY'))");
 query.bindValue(":id",id);
 query.bindValue(":nom",nom);
 query.bindValue(":prenom",prenom);
 query.bindValue(":genre",genre);
 query.bindValue(":adresse",adresse);
-query.bindValue(":datenaiss","01-01-2000");
+query.bindValue(":datenaiss",date_nais);
 return query.exec();
 }
+QSqlQueryModel *Client::afficher()
+{
+QSqlQuery query;
+QSqlQueryModel *model=new QSqlQueryModel();
+query.prepare(QString("Select * from client"));
+query.exec();
+model->setQuery(query);
+return model;
+}
 
+bool Client::supprimer()
+{
+    QSqlQuery query;
+    query.prepare(QString("DELETE from client where id=:id"));
+    query.bindValue(":id",id);
+    return query.exec();
+}
+bool Client::update()
+{
+    QSqlQuery query;
+    query.prepare(QString("update client set nom=:nom,prenom=:prenom,genre=:genre,adresse=:adresse,datenaiss=TO_DATE(:datenaiss, 'DD/MM/YYYY') where id=:id"));
+    query.bindValue(":id",id);
+    query.bindValue(":nom",nom);
+    query.bindValue(":prenom",prenom);
+    query.bindValue(":genre",genre);
+    query.bindValue(":adresse",adresse);
+    query.bindValue(":datenaiss",date_nais);
+    return query.exec();
+
+}

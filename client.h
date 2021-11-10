@@ -1,6 +1,7 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 #include <QString>
+#include "connection.h"
 /*
 typedef struct dates
 {
@@ -32,7 +33,9 @@ public:
     void setdate_nais(QString date_nais);
     //Crud
     bool ajouter();
-    void afficher();
+    QSqlQueryModel* afficher();
+    bool supprimer();
+    bool update();
 
 private:
     QString id;
