@@ -5,23 +5,28 @@
 #include <QSqlQueryModel>
 #include <QDate>
 #include <QTime>
+#include <ui_mainwindow.h>
 
 class abonnement
 {
-public:
-
-    abonnement();
-    abonnement(QString ID,QString type,QString Duree,int Prix);
-
-    bool ajouter_abonnement();
-    bool modifier_abonnement();
-    bool supprimer_abonnement();
-    QSqlQueryModel * afficher_abonnement();
 private:
-    QString ID,type;
-    int Prix;
-    //QDate
+    QString ID;
     QString Duree;
+    int Prix;
+    //QDate Date;
+
+public:
+    abonnement();
+    abonnement(QString ID,QString Duree,int Prix);
+
+    bool ajouter_abonnement(QString,QString,int);
+    bool modifier_abonnement(QString,QString,int);//Ui::MainWindow *ui);
+    bool supprimer_abonnement(Ui::MainWindow *ui);
+    bool set_duree(QString,QString);
+    bool set_prix(QString,int);
+    //bool supprimer_abonnement(QString i);
+    QSqlQueryModel * afficher_abonnement();
+
 };
 
 #endif // ABONNEMENT_H
