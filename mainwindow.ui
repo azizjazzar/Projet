@@ -49,6 +49,21 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="maxLength">
+       <number>4</number>
+      </property>
+      <property name="placeholderText">
+       <string/>
+      </property>
+      <property name="cursorMoveStyle">
+       <enum>Qt::VisualMoveStyle</enum>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QLabel" name="label_harrive">
       <property name="geometry">
@@ -71,6 +86,9 @@
         <width>121</width>
         <height>22</height>
        </rect>
+      </property>
+      <property name="calendarPopup">
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLabel" name="label_date">
@@ -152,14 +170,14 @@
       <widget class="QPushButton" name="pushButton_ok">
        <property name="geometry">
         <rect>
-         <x>960</x>
+         <x>890</x>
          <y>120</y>
          <width>93</width>
          <height>28</height>
         </rect>
        </property>
        <property name="text">
-        <string>OK</string>
+        <string>ajouter</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_chauf">
@@ -171,6 +189,12 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="maxLength">
+        <number>8</number>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_matricule">
        <property name="geometry">
@@ -180,6 +204,45 @@
          <width>191</width>
          <height>22</height>
         </rect>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_modifierr">
+       <property name="geometry">
+        <rect>
+         <x>1010</x>
+         <y>120</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>modifier</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="dateEdit">
+       <property name="geometry">
+        <rect>
+         <x>600</x>
+         <y>10</y>
+         <width>110</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+       <property name="timeSpec">
+        <enum>Qt::LocalTime</enum>
+       </property>
+       <property name="date">
+        <date>
+         <year>2021</year>
+         <month>11</month>
+         <day>11</day>
+        </date>
        </property>
       </widget>
      </widget>
@@ -195,6 +258,16 @@
       <item>
        <property name="text">
         <string>Passage-tunis</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Slimen_kahya-Manouba</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Beb_saadoun-tunis</string>
        </property>
       </item>
      </widget>
@@ -310,6 +383,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
       </widget>
       <widget class="QComboBox" name="comboBox_planifie">
        <property name="geometry">
@@ -378,17 +454,7 @@
        </item>
        <item>
         <property name="text">
-         <string>Destination</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
          <string>Cin chauffeur</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Matricule</string>
         </property>
        </item>
       </widget>
@@ -417,6 +483,16 @@
         <string>Passage-tunis</string>
        </property>
       </item>
+      <item>
+       <property name="text">
+        <string>Slimen_kahya-Manouba</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Beb_saadoun-tunis</string>
+       </property>
+      </item>
      </widget>
      <widget class="QLabel" name="label_de">
       <property name="geometry">
@@ -429,16 +505,6 @@
       </property>
       <property name="text">
        <string>Depart</string>
-      </property>
-     </widget>
-     <widget class="QDateEdit" name="dateEdit">
-      <property name="geometry">
-       <rect>
-        <x>660</x>
-        <y>20</y>
-        <width>181</width>
-        <height>22</height>
-       </rect>
       </property>
      </widget>
      <widget class="QTimeEdit" name="timeEdit_arrive2">
@@ -578,16 +644,6 @@
        </item>
        <item>
         <property name="text">
-         <string>Heure de depart </string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Heure d'arrivé</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
          <string>Reference </string>
         </property>
        </item>
@@ -606,7 +662,6 @@
      <zorder>pushButton_annuler</zorder>
      <zorder>comboBox_dest</zorder>
      <zorder>label_de</zorder>
-     <zorder>dateEdit</zorder>
      <zorder>timeEdit_arrive2</zorder>
      <zorder>label_harriveprevu</zorder>
      <zorder>timeEdit_arrive1</zorder>
@@ -856,12 +911,12 @@
      <rect>
       <x>20</x>
       <y>720</y>
-      <width>93</width>
+      <width>51</width>
       <height>28</height>
      </rect>
     </property>
     <property name="text">
-     <string>Actualiser</string>
+     <string/>
     </property>
     <property name="icon">
      <iconset>
