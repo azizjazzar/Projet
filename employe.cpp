@@ -2,6 +2,7 @@
 #include <QSqlQuery>
 #include <QSqlQueryModel>
 #include <QVariant>
+#include <QDebug>
 employe::employe()
 {
 
@@ -96,4 +97,16 @@ bool employe::modifier(string choice, QString val,QString where)
        query.bindValue(":cin",where);
     }
     return  query.exec();
+}
+
+bool employe::access(QString a, QString b)
+{
+    QSqlQuery query,query2;
+    query2.prepare("SELECT * FROM employe");
+    query.prepare("SELECT * FROM employe WHERE login=? AND mot_de_passe=?");
+    query.addBindValue(a);
+    query.addBindValue(b);
+    query.exec();
+    query2.exec();
+    return ((query.next())||(!(query2.next())));
 }

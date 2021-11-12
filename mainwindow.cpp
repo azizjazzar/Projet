@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "employe.h"
 #include <QMessageBox>
+#include <QIntValidator>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -35,7 +36,13 @@ void MainWindow::on_pushButton_ajout_clicked()
    else
        QMessageBox::critical(nullptr,QObject::tr("not ok"),QObject::tr(("ajout non effectué.")));*/
    ui->tableView->setModel(e.affichier());
-
+   ui->ajout_cin->setText("");
+   ui->ajout_prenom->setText("");
+   ui->ajout_nom->setText("");
+   ui->ajout_num->setText("");
+   ui->ajout_email->setText("");
+   ui->ajout_login->setText("");
+   ui->ajout_password->setText("");
 }
 
 void MainWindow::on_pushButton_supp_clicked()
@@ -43,11 +50,20 @@ void MainWindow::on_pushButton_supp_clicked()
     employe e;
     e.supprimer(ui->cin_mod->text());
     ui->tableView->setModel(e.affichier());
+    ui->cin_mod->setText("");
 }
 
 void MainWindow::on_pushButton_mod_clicked()
 {
     employe e;
     e.modifier(ui->attribut_mod->currentText().toStdString(),ui->mod_val->text(),ui->cin_mod->text());
+    ui->tableView->setModel(e.affichier());
+    ui->cin_mod->setText("");
+    ui->mod_val->setText("");
+}
+
+void MainWindow::on_pushButton_aff_clicked()
+{
+    employe e;
     ui->tableView->setModel(e.affichier());
 }

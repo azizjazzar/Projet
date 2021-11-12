@@ -225,6 +225,12 @@
          <height>20</height>
         </rect>
        </property>
+       <property name="maxLength">
+        <number>8</number>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>false</bool>
+       </property>
       </widget>
       <widget class="QLabel" name="label_8">
        <property name="geometry">
@@ -247,6 +253,9 @@
          <width>171</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="maxLength">
+        <number>8</number>
        </property>
       </widget>
       <widget class="QLabel" name="label_9">
