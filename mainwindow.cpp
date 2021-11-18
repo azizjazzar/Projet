@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "abonnement.h"
 #include <QMessageBox>
+#include <QIntValidator>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -9,6 +10,9 @@ MainWindow::MainWindow(QWidget *parent)
 { abonnement A;
     ui->setupUi(this);
     ui->tableView_ab->setModel(A.afficher_abonnement());
+    ui->spinBox_duree2->setRange(0,28);
+    ui->spinBox_duree2_modif->setRange(0,28);
+
 }
 
 MainWindow::~MainWindow()
@@ -83,4 +87,31 @@ void MainWindow::on_pushButton_modifier_clicked()
                                       "Click Cancel to exit."), QMessageBox::Cancel);
 
         }
+}
+
+void MainWindow::on_pushButton_recherche_clicked()
+{
+ QString ID = ui->lineEdit_recherche->text();
+ abonnement A;
+ ui->tableView_ab->setModel(A.Rechercher(ID));
+
+}
+
+void MainWindow::on_pushButton_trier_clicked()
+{ abonnement A;
+ QString cat = ui->comboBox_trie->currentText();
+         if (cat =="Durée")
+            ui->tableView_ab->setModel(A.TrierDuree());
+         else if (cat =="Prix")
+            ui->tableView_ab->setModel(A.TrierPrix());
+         else
+             QMessageBox::critical(nullptr, QObject::tr("Erreur de trie"),
+                         QObject::tr("Erreur !.\n"
+                                     "Click Cancel to exit."), QMessageBox::Cancel);
+
+}
+
+void MainWindow::on_pushButton_clicked()
+{ abonnement A;
+    ui->tableView_ab->setModel(A.afficher_abonnement());
 }

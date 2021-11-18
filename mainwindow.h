@@ -23,6 +23,12 @@ private slots:
 
   void on_pushButton_modifier_clicked();
 
+  void on_pushButton_recherche_clicked();
+
+  void on_pushButton_trier_clicked();
+
+  void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

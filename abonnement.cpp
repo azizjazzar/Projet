@@ -98,25 +98,62 @@ bool abonnement::modifier_abonnement(QString A,QString B,int C)//Ui::MainWindow 
     query.bindValue(":PRIX",C);
 
     return query.exec();
-    /*QString ref=ui->tableView_ab->model()->data(ui->tableView_ab->model()->index(ui->tableView_ab->selectionModel()->currentIndex().row(),0)).toString();
 
-        QSqlQuery query;
-        query.prepare("select * FROM ABONNEMENT WHERE ID ='"+ref+"'");
-        query.exec();
-        int total=0;
-        while(query.next()){
-            total++;
-        }
-        if(total==1){
-            QSqlQuery q;
-            query.prepare("UPDATE ABONNEMENT SET DUREE=:DUREE, PRIX=:PRIX WHERE ID= '"+ref+"'");
-            query.bindValue(":ID",A);
-            query.bindValue(":DUREE",B);
-            query.bindValue(":PRIX",C);
-            return q.exec();
-        }
-        else
-        {
-            return false;
-        }*/
 }
+QDateTime abonnement::GetDateFin(QString Du)
+{
+    QDateTime DateAct = QDateTime::currentDateTime();
+    QString format = "yyyy/MM/dd HH:mm:ss";
+    QString DureeF = "0000/"+Du+" 00:00:00";
+    QDateTime Duree = QDateTime::fromString(DureeF,format);
+    QString M1 = Du.at(1);
+    QString M2 = Du.at(2);
+    int M =  (M1+M2).toInt();
+    QString D1 = Du.at(4);
+    QString D2 = Du.at(5);
+    int D = (D1+D2).toInt();
+    QDateTime DateFin = DateAct.addMonths(M).addDays(D);
+    return DateFin;
+}
+
+QSqlQueryModel *abonnement::Rechercher(QString id)
+  {   QSqlQuery query;
+      QSqlQueryModel * model= new QSqlQueryModel();
+      model->setQuery("select * from ABONNEMENT WHERE ID = '"+id+"'");
+      /*id="%"+id+"%";
+      query.bindValue(":id",id);
+      query.exec();
+      model->setQuery(query);*/
+      model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+      model->setHeaderData(1, Qt::Horizontal, QObject::tr("DUREE"));
+      model->setHeaderData(2, Qt::Horizontal, QObject::tr("PRIX"));
+      return model;
+
+  }
+
+
+  QSqlQueryModel * abonnement::TrierDuree()
+  {
+      QSqlQuery *qry=new QSqlQuery();
+      QSqlQueryModel *model=new QSqlQueryModel();
+        qry->prepare("select * from ABONNEMENT order by DUREE ASC");
+           model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+           model->setHeaderData(1, Qt::Horizontal, QObject::tr("DUREE"));
+           model->setHeaderData(2, Qt::Horizontal, QObject::tr("PRIX"));
+        qry->exec();
+      model->setQuery(*qry);
+      return model;
+  }
+
+  QSqlQueryModel * abonnement::TrierPrix()
+  {
+      QSqlQuery * qry=new QSqlQuery();
+      QSqlQueryModel * model=new QSqlQueryModel();
+        qry->prepare("select * from ABONNEMENT order by PRIX ASC");
+        model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+        model->setHeaderData(1, Qt::Horizontal, QObject::tr("DUREE"));
+        model->setHeaderData(2, Qt::Horizontal, QObject::tr("PRIX"));
+        qry->exec();
+      model->setQuery(*qry);
+      return model;
+  }

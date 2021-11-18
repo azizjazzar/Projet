@@ -22,12 +22,14 @@ SOURCES += \
     abonnement.cpp \
     connection.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    notification.cpp
 
 HEADERS += \
     abonnement.h \
     connection.h \
-    mainwindow.h
+    mainwindow.h \
+    notification.h
 
 FORMS += \
     mainwindow.ui
