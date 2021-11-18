@@ -77,3 +77,50 @@ bool Facture::modifier_facture(QString reference, QString Nom, QString Prenom, Q
     query.bindValue(3,datee);
     return query.exec();
 }
+QSqlQueryModel * Facture::rechercher_facture(QString SearchName)
+{
+
+
+        QSqlQueryModel *model = new QSqlQueryModel;
+        model->setQuery("SELECT * from FACTURE where reference LIKE '"+SearchName+"%'");
+
+        model->setHeaderData(0, Qt::Horizontal, QObject::tr("reference"));
+        model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom "));
+        model->setHeaderData(2, Qt::Horizontal, QObject::tr("Prenom "));
+        model->setHeaderData(3, Qt::Horizontal, QObject::tr("datee"));
+            return model;
+
+
+}
+QSqlQueryModel* Facture::tri_reference()
+{
+    QSqlQueryModel* model=new QSqlQueryModel() ;
+    QSqlQuery *query=new QSqlQuery;
+    query->prepare("select * from FACTURE ORDER BY reference") ;
+    query->exec() ;
+    model->setQuery(*query) ;
+    return model;
+
+}
+QSqlQueryModel* Facture::tri_date()// triii
+{
+    QSqlQueryModel* model=new QSqlQueryModel() ;
+    QSqlQuery *query=new QSqlQuery;
+    query->prepare("select * from FACTURE ORDER BY datee") ;
+    query->exec() ;
+    model->setQuery(*query) ;
+    return model;
+
+}
+QSqlQueryModel* Facture::tri_nom()
+{
+    QSqlQueryModel* model=new QSqlQueryModel() ;
+    QSqlQuery *query=new QSqlQuery;
+    query->prepare("select * from FACTURE ORDER BY nom") ;
+    query->exec() ;
+    model->setQuery(*query) ;
+    return model;
+
+}
+
+

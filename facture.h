@@ -29,6 +29,10 @@ public:
    QSqlQueryModel* afficher_facture();
    bool supprimer_facture(QString);
    bool modifier_facture(QString,QString,QString,QString);
+   QSqlQueryModel * rechercher_facture(QString);
+       QSqlQueryModel* tri_reference() ;
+       QSqlQueryModel *tri_date();
+        QSqlQueryModel *tri_nom();
 
 private:
    QString reference="";

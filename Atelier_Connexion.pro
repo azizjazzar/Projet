@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui sql charts network printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,15 +28,20 @@ SOURCES += \
     facture.cpp \
         main.cpp \
         mainwindow.cpp \
-    connection.cpp
+    connection.cpp \
+    notepad.cpp \
+    smtp.cpp
 
 HEADERS += \
     facture.h \
         mainwindow.h \
-    connection.h
+    connection.h \
+    notepad.h \
+    smtp.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+        notepad.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

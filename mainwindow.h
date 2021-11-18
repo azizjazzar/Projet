@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "facture.h"
+#include<QTimer>
+
 namespace Ui {
 class MainWindow;
 }
@@ -19,6 +21,7 @@ public:
     bool verif_nom();
     bool verif_prenom();
     bool verif_date();
+    void mailSent(QString status);
 private slots:
 
 
@@ -34,6 +37,31 @@ private slots:
 
 
 
+    void on_email_clicked();
+
+    void on_sendBtn_2_clicked();
+
+    void on_browseBtn_2_clicked();
+
+    void on_pdf_clicked();
+
+    void on_pushButton_clicked();
+
+    void myfunctionn();
+    void on_stat_clicked();
+
+    void on_return_3_clicked();
+
+
+    void on_notepad_clicked();
+
+    void on_trier_facture_clicked();
+
+
+    void on_recherche_facture_textChanged(const QString &arg1);
+
+    void on_rcpt_2_cursorPositionChanged(int arg1, int arg2);
+
 private:
     Ui::MainWindow *ui;
     QTimer * timerr ;
@@ -41,6 +69,9 @@ private:
     QPixmap PixTrueIcon;
     QPixmap PixFalseIcon;
     QPixmap background ;
+    QPixmap bus ;
+
+    QStringList files;
 
 
 
