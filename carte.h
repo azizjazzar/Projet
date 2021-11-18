@@ -13,9 +13,11 @@ public:
     QSqlQueryModel* afficher();
     bool supprimer();
     bool update();
+    QString  recherchee();
 
     //sett
     void setid(QString);
+
 private:
     QString point ;
     QString id;

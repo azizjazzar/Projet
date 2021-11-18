@@ -49,3 +49,15 @@ bool carte::supprimer()
     query.bindValue(":id",id);
     return query.exec();
 }
+QString  carte::recherchee()
+{
+    QSqlQuery query;
+    query.prepare(QString("select id from carte where id=:id"));
+    query.bindValue(0,id);
+    query.exec();
+    query.next();
+    return query.value(0).toString();
+
+
+}
+

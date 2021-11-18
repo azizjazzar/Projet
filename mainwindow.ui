@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1328</width>
-    <height>1470</height>
+    <width>1346</width>
+    <height>1427</height>
    </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1500</width>
+    <height>1500</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -79,7 +85,7 @@
     <property name="geometry">
      <rect>
       <x>230</x>
-      <y>110</y>
+      <y>100</y>
       <width>891</width>
       <height>651</height>
      </rect>
@@ -151,11 +157,11 @@ color:rgba(255,255,255);</string>
       <string>Prenom:</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="prenom">
+    <widget class="QLineEdit" name="nom">
      <property name="geometry">
       <rect>
        <x>190</x>
-       <y>270</y>
+       <y>200</y>
        <width>111</width>
        <height>16</height>
       </rect>
@@ -203,7 +209,7 @@ color:rgba(255,255,255);</string>
       <string notr="true">color:rgb(255, 255, 255;)</string>
      </property>
      <property name="text">
-      <string>  Homme</string>
+      <string>Homme</string>
      </property>
      <property name="checked">
       <bool>true</bool>
@@ -222,7 +228,7 @@ color:rgba(255,255,255);</string>
       <string notr="true">color:rgb(255, 255, 255;)</string>
      </property>
      <property name="text">
-      <string> Femme</string>
+      <string>Femme</string>
      </property>
     </widget>
     <widget class="QDateEdit" name="dateedit">
@@ -279,7 +285,7 @@ border-radius:20px;
       <rect>
        <x>40</x>
        <y>490</y>
-       <width>65</width>
+       <width>81</width>
        <height>22</height>
       </rect>
      </property>
@@ -304,11 +310,11 @@ color:rgba(255,255,255);</string>
       <string>Reset</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="nom">
+    <widget class="QLineEdit" name="prenom">
      <property name="geometry">
       <rect>
        <x>190</x>
-       <y>200</y>
+       <y>270</y>
        <width>111</width>
        <height>16</height>
       </rect>
@@ -444,19 +450,17 @@ color:rgba(255,255,255);</string>
       </item>
       <item>
        <widget class="QComboBox" name="comboBox">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
         <item>
          <property name="text">
-          <string>Choisir le trie</string>
+          <string>Croissant</string>
          </property>
         </item>
         <item>
          <property name="text">
           <string>Decroissant</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Croissant</string>
          </property>
         </item>
        </widget>
@@ -527,24 +531,17 @@ font: 11pt &quot;Microsoft YaHei&quot;;
      <pixmap>../../Desktop/Nouveau dossier/Nouveau dossier (2)/tttt-removebg-preview.png</pixmap>
     </property>
    </widget>
-   <widget class="QCalendarWidget" name="calendarWidget">
-    <property name="geometry">
-     <rect>
-      <x>790</x>
-      <y>60</y>
-      <width>311</width>
-      <height>201</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="lineEdit_2">
     <property name="geometry">
      <rect>
       <x>304</x>
       <y>32</y>
-      <width>365</width>
+      <width>241</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string/>
@@ -566,7 +563,7 @@ font: 11pt &quot;Microsoft YaHei&quot;;
      <enum>Qt::WheelFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">boder:none;</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string/>
@@ -579,8 +576,8 @@ font: 11pt &quot;Microsoft YaHei&quot;;
    <widget class="QFrame" name="fonctionaliteframe">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>90</y>
+      <x>240</x>
+      <y>120</y>
       <width>861</width>
       <height>661</height>
      </rect>
@@ -600,29 +597,19 @@ background-color:rgb(47, 43, 63);
     <widget class="QTabWidget" name="tabWidget">
      <property name="geometry">
       <rect>
-       <x>40</x>
-       <y>80</y>
+       <x>70</x>
+       <y>100</y>
        <width>761</width>
        <height>511</height>
       </rect>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
        <string>Carte de fidelité</string>
       </attribute>
-      <widget class="QLineEdit" name="idcarte">
-       <property name="geometry">
-        <rect>
-         <x>240</x>
-         <y>80</y>
-         <width>113</width>
-         <height>22</height>
-        </rect>
-       </property>
-      </widget>
       <widget class="QTableView" name="tableView_2">
        <property name="geometry">
         <rect>
@@ -718,7 +705,7 @@ color:rgba(255,255,255);</string>
       <widget class="QLabel" name="label_13">
        <property name="geometry">
         <rect>
-         <x>120</x>
+         <x>110</x>
          <y>70</y>
          <width>111</width>
          <height>22</height>
@@ -733,11 +720,68 @@ color: rgb(255, 255, 255)
         <string>Identifiant:</string>
        </property>
       </widget>
+      <widget class="QComboBox" name="comboBox_2">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>70</y>
+         <width>111</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="editable">
+        <bool>true</bool>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
        <string>Client innactif</string>
       </attribute>
+      <widget class="QPushButton" name="pushButton_5">
+       <property name="geometry">
+        <rect>
+         <x>320</x>
+         <y>300</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Valider</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_15">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>110</y>
+         <width>431</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 12pt &quot;Microsoft YaHei&quot;;
+color: rgb(255, 255, 255)
+</string>
+       </property>
+       <property name="text">
+        <string>Supprimer tous les clients innactifs avant le:</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="datesupp">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>210</y>
+         <width>110</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
      </widget>
     </widget>
    </widget>
@@ -927,30 +971,214 @@ font: 11pt &quot;Microsoft YaHei&quot;;
       <normaloff>../../Desktop/Nouveau dossier/Nouveau dossier (2)/P-accueil-removebg-preview (1).png</normaloff>../../Desktop/Nouveau dossier/Nouveau dossier (2)/P-accueil-removebg-preview (1).png</iconset>
     </property>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QCalendarWidget" name="calendarWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>2</width>
-      <height>2</height>
+      <x>800</x>
+      <y>60</y>
+      <width>311</width>
+      <height>201</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2"/>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>2</width>
-      <height>2</height>
+      <x>230</x>
+      <y>100</y>
+      <width>891</width>
+      <height>681</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_3"/>
+    <property name="styleSheet">
+     <string notr="true">
+background-color:rgb(47, 43, 63);
+</string>
+    </property>
+    <widget class="QFrame" name="horizontalFrame">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>130</y>
+       <width>471</width>
+       <height>401</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>520</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(44, 137, 84);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_16">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>570</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(21, 64, 39);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_17">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>620</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(122, 200, 156);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_18">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>570</y>
+       <width>211</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 9pt &quot;Microsoft YaHei&quot;;
+color: rgb(255, 255, 255)
+</string>
+     </property>
+     <property name="text">
+      <string>Personne agé plus 75</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_19">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>520</y>
+       <width>161</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 9pt &quot;Microsoft YaHei&quot;;
+color: rgb(255, 255, 255)
+</string>
+     </property>
+     <property name="text">
+      <string>Adulte entre 18 et 75</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_20">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>620</y>
+       <width>171</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 9pt &quot;Microsoft YaHei&quot;;
+color: rgb(255, 255, 255)
+</string>
+     </property>
+     <property name="text">
+      <string>Enfant inférieur a 18</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_21">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>130</y>
+       <width>261</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Microsoft YaHei&quot;;
+color: rgb(255, 255, 255)
+</string>
+     </property>
+     <property name="text">
+      <string>|Statistique client age|</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_22">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>50</y>
+       <width>131</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;Microsoft YaHei&quot;;
+color:rgb(159, 159, 159);
+</string>
+     </property>
+     <property name="text">
+      <string>Actualité</string>
+     </property>
+    </widget>
+    <widget class="QFrame" name="horizontalFrame_2">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>150</y>
+       <width>461</width>
+       <height>381</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+background-color:rgb(47, 43, 63);
+</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_4"/>
+    </widget>
+    <widget class="QLabel" name="label_23">
+     <property name="geometry">
+      <rect>
+       <x>600</x>
+       <y>130</y>
+       <width>261</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Microsoft YaHei&quot;;
+color: rgb(255, 255, 255)
+</string>
+     </property>
+     <property name="text">
+      <string>|Statistique nouveau Client |</string>
+     </property>
+    </widget>
    </widget>
-   <zorder>layoutWidget</zorder>
-   <zorder>layoutWidget</zorder>
    <zorder>label</zorder>
    <zorder>label_2</zorder>
    <zorder>label_4</zorder>
@@ -961,12 +1189,13 @@ font: 11pt &quot;Microsoft YaHei&quot;;
    <zorder>lineEdit_2</zorder>
    <zorder>pushButton_6</zorder>
    <zorder>fonctionaliteframe</zorder>
-   <zorder>calendarWidget</zorder>
    <zorder>Fonctionalite</zorder>
    <zorder>statistique</zorder>
    <zorder>gestionclient</zorder>
    <zorder>statistique_2</zorder>
    <zorder>accueil</zorder>
+   <zorder>widget</zorder>
+   <zorder>calendarWidget</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
