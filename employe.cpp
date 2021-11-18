@@ -3,9 +3,16 @@
 #include <QSqlQueryModel>
 #include <QVariant>
 #include <QDebug>
+#include <QtCharts/QChartView>
+#include <QtCharts>
 employe::employe()
 {
 
+}
+
+employe::employe(QString a)
+{
+    CIN=a;
 }
 
 employe::employe(QString nom,QString prenom,QDate date,QString CIN,int num,QString Email,QString role,QString login,QString password)
@@ -103,10 +110,207 @@ bool employe::access(QString a, QString b)
 {
     QSqlQuery query,query2;
     query2.prepare("SELECT * FROM employe");
+    query.prepare("SELECT * FROM employe WHERE login=? AND mot_de_passe=? AND role=?");
+    query.addBindValue(a);
+    query.addBindValue(b);
+    QString s("Responsable resourse humaine");
+    query.addBindValue(s);
+    query.exec();
+    query2.exec();
+    account(a,b);
+    return ((query.next())||(!(query2.next())));
+}
+
+bool employe::account(QString a, QString b)
+{
+    QSqlQuery query;
     query.prepare("SELECT * FROM employe WHERE login=? AND mot_de_passe=?");
     query.addBindValue(a);
     query.addBindValue(b);
-    query.exec();
-    query2.exec();
-    return ((query.next())||(!(query2.next())));
+    if(query.exec()&&query.next())
+    {
+
+            QSqlQueryModel model;
+            model.setQuery(query);
+            CIN=model.data(model.index(0,0)).toString();
+            nom=model.data(model.index(0,1)).toString();
+            prenom=model.data(model.index(0,2)).toString();
+            num=model.data(model.index(0,3)).toInt();
+            Email=model.data(model.index(0,4)).toString();
+            login=model.data(model.index(0,5)).toString();
+            password=model.data(model.index(0,6)).toString();
+            date=model.data(model.index(0,7)).toDate();
+            role=model.data(model.index(0,8)).toString();
+            return true;
+
+    }
+    return false;
 }
+
+QSqlQueryModel * employe::rechercher(QString a,string b)
+{
+    QSqlQueryModel * model=new QSqlQueryModel();
+    QSqlQuery query;
+    if(b=="rechercher par CIN")
+    {
+        query.prepare("SELECT * FROM employe WHERE CIN= :cin");
+        query.bindValue(":cin",a);
+    }
+    else if(b=="rechercher par nom")
+    {
+        query.prepare("SELECT * FROM employe WHERE nom= :nom");
+        query.bindValue(":nom",a);
+    }
+    else if(b=="rechercher par prenom")
+    {
+        query.prepare("SELECT * FROM employe WHERE prenom= :prenom");
+        query.bindValue(":prenom",a);
+    }
+    else if(b=="rechercher par role")
+    {
+        query.prepare("SELECT * FROM employe WHERE role= :role");
+        query.bindValue(":role",a);
+    }
+    if(query.exec())
+        model->setQuery(query);
+    return model;
+}
+
+QSqlQueryModel * employe::tri(string a,string b)
+{
+    QSqlQueryModel * model=new QSqlQueryModel();
+    QSqlQuery query;
+    if(a=="par ordre alphebetique de prenom")
+    {
+        if(b=="croissant")
+            query.prepare("SELECT * FROM employe order by prenom ");
+        else
+            query.prepare("SELECT * FROM employe order by prenom DESC");
+    }
+    else if(a=="par ordre alphebetique de nom")
+    {
+        if(b=="croissant")
+            query.prepare("SELECT * FROM employe order by nom ");
+        else
+            query.prepare("SELECT * FROM employe order by nom DESC");
+    }
+    else if(a=="par ordre alphebetique de login")
+    {
+        if(b=="croissant")
+            query.prepare("SELECT * FROM employe order by login ");
+        else
+            query.prepare("SELECT * FROM employe order by login DESC");
+    }
+    else if(a=="par ordre alphebetique de email")
+    {
+        if(b=="croissant")
+            query.prepare("SELECT * FROM employe order by email ");
+        else
+            query.prepare("SELECT * FROM employe order by email DESC");
+    }
+    if(query.exec())
+        model->setQuery(query);
+    else return NULL;
+    return model;
+
+}
+
+QSqlQueryModel * employe::emploi()
+{
+    QSqlQueryModel * model=new QSqlQueryModel();
+    QSqlQuery query;
+    query.prepare("SELECT voyage.heure_depart,voyage.heure_arrive,voyage.matricule FROM voyage WHERE cin_chaufeur= :cin AND heure_depart >= :date order by heure_depart");
+    QDate d=d.currentDate();
+    query.bindValue(":date",d);
+    query.bindValue(":cin",CIN);
+    if(query.exec())
+        model->setQuery(query);
+    return model;
+}
+
+float employe::chauffeur()
+{
+    QSqlQuery query;
+    QSqlQueryModel model;
+    query.prepare("SELECT COUNT (role) FROM employe WHERE role = :role");
+    query.bindValue(":role","chauffeur");
+    query.exec();
+    model.setQuery(query);
+    float a=model.data(model.index(0,0)).toFloat();
+    query.prepare("SELECT COUNT (role) FROM employe");
+    query.exec();
+    model.setQuery(query);
+    float b=model.data(model.index(0,0)).toFloat();
+    return a/b;
+}
+
+float employe::RRH()
+{
+    QSqlQuery query;
+    QSqlQueryModel model;
+    query.prepare("SELECT COUNT (role) FROM employe WHERE role = :role");
+    query.bindValue(":role","Responsable resourse humaine");
+    query.exec();
+    model.setQuery(query);
+    float a=model.data(model.index(0,0)).toFloat();
+    query.prepare("SELECT COUNT (role) FROM employe");
+    query.exec();
+    model.setQuery(query);
+    float b=model.data(model.index(0,0)).toFloat();
+    return a/b;
+}
+
+float employe::other()
+{
+    QSqlQuery query;
+    QSqlQueryModel model;
+    query.prepare("SELECT COUNT (role) FROM employe WHERE role != :role AND role != :role2");
+    query.bindValue(":role","Responsable resourse humaine");
+    query.bindValue(":role2","chauffeur");
+    query.exec();
+    model.setQuery(query);
+    float a=model.data(model.index(0,0)).toFloat();
+    query.prepare("SELECT COUNT (role) FROM employe");
+    query.exec();
+    model.setQuery(query);
+    float b=model.data(model.index(0,0)).toFloat();
+    return a/b;
+}
+QString employe::get_cin()
+{
+    return CIN;
+}
+
+QString employe::get_nom()
+{
+    return nom;
+}
+QString employe::get_prenom()
+{
+    return prenom;
+}
+int employe::get_num()
+{
+    return num;
+}
+QDate employe::get_date()
+{
+    return date;
+}
+QString employe::get_role()
+{
+    return role;
+}
+QString employe::get_email()
+{
+    return Email;
+}
+QString employe::get_login()
+{
+    return login;
+}
+QString employe::get_password()
+{
+    return password;
+}
+

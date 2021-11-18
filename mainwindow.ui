@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>gestion des employés</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="tabWidget">
@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -405,6 +405,21 @@
           <string>rechercher par CIN</string>
          </property>
         </item>
+        <item>
+         <property name="text">
+          <string>rechercher par nom</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>rechercher par prenom</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>rechercher par role</string>
+         </property>
+        </item>
        </widget>
       </widget>
       <widget class="QLabel" name="label_21">
@@ -437,6 +452,16 @@
        <item>
         <property name="text">
          <string>par ordre alphebetique de nom</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>par ordre alphebetique de login</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>par ordre alphebetique de email</string>
         </property>
        </item>
       </widget>
@@ -663,6 +688,35 @@
      <attribute name="title">
       <string>Tab 2</string>
      </attribute>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>460</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>exporter</string>
+      </property>
+     </widget>
+     <widget class="QFrame" name="frame">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>40</y>
+        <width>811</width>
+        <height>411</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>

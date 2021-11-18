@@ -15,6 +15,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void chart();
 
 private slots:
     void on_pushButton_ajout_clicked();
@@ -24,6 +25,15 @@ private slots:
     void on_pushButton_mod_clicked();
 
     void on_pushButton_aff_clicked();
+
+    void on_pushButton_9_clicked();
+
+    void on_pushButton_11_clicked();
+
+    void on_pushButton_8_clicked();
+
+
+    void on_pushButton_2_clicked();
 
 private:
     Ui::MainWindow *ui;

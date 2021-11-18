@@ -11,9 +11,10 @@ using namespace std;
 class employe
 {
 public:
+    employe(QString a);
     employe();
     employe(QString nom,QString prenom,QDate date,QString CIN,int num,QString Email,QString role,QString login,QString password);
-    /*int get_cin();
+    QString get_cin();
     int get_num();
     QString get_nom();
     QString get_prenom();
@@ -30,12 +31,19 @@ public:
     void set_login(QString a);
     void set_password(QString a);
     void set_role(QString a);
-    void set_date(QDate a);*/
+    void set_date(QDate a);
     bool ajouter();
     QSqlQueryModel * affichier();
+    QSqlQueryModel * rechercher(QString a, string b);
     bool supprimer(QString a);
     bool modifier(string choice,QString val,QString where);
     bool access(QString a,QString b);
+    bool account(QString a,QString b);
+    QSqlQueryModel * tri(string a,string b);
+    QSqlQueryModel * emploi();
+    float RRH();
+    float chauffeur();
+    float other();
 private:
     QString nom,prenom,Email,login,password,CIN,role;
     int num;
