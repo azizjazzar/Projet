@@ -36,10 +36,23 @@ private slots:
 
    void on_pushButton_annuler_clicked();
 
+   void on_pushButton_rechercher_clicked();
+
+   void on_pushButton_trier_clicked();
+
+   void on_pushButton_ok_2_clicked();
+
+
+
+   void on_pushButton_annuler_2_clicked();
+
+   void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     Voyage V;
     QString val;
-    bool modifier=false;
+    int r=0;
+
 };
 #endif // MAINWINDOW_H

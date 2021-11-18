@@ -4,6 +4,17 @@
 #include<QString>
 #include <QObject>
 #include <QDate>
+#include <QVariant>
+#include <QPainter>
+#include <QtPrintSupport/QPrinter>
+#include <QTextDocument>
+#include "ui_mainwindow.h"
+#include<QSqlRecord>
+#include <QPrintDialog>
+#include<QTextStream>
+#include<QFile>
+
+
 Voyage::Voyage()
 {
      ref="";
@@ -103,3 +114,194 @@ bool Voyage::modifier_voyage( )
     return query.exec();
 }
 
+QSqlQueryModel *Voyage::rechercher(string choix,QString v,QString etat_voyage)
+{
+    QSqlQueryModel * model=new QSqlQueryModel();
+
+if (etat_voyage.toStdString()=="Tous")
+
+{ qDebug()<<"here";
+    if (choix=="Reference ")
+   {
+    model->setQuery("SELECT* FROM voyage WHERE reference LIKE '"+v+"%'");
+
+   }
+   else if (choix=="Cin chauffeur")
+   {
+    model->setQuery("SELECT* FROM voyage WHERE cin_chauffeur LIKE '"+v+"%'");
+   }
+  /* else
+   {
+    model->setQuery("SELECT* FROM voyage WHERE date_d LIKE '"+v+"%'");
+   }*/
+}
+
+else
+{
+    if (choix=="Reference ")
+    {
+    model->setQuery("SELECT* FROM voyage WHERE reference LIKE '"+v+"%' and  etat LIKE '"+etat_voyage+"'");
+    }
+    else if (choix=="Cin chauffeur")
+    {
+    model->setQuery("SELECT* FROM voyage WHERE cin_chauffeur LIKE '"+v+"%' and  etat LIKE '"+etat_voyage+"'");
+    }
+    /*else
+    {
+    model->setQuery("SELECT* FROM voyage WHERE date_d='"+v+"' and  etat LIKE '"+etat_voyage+"'");
+    }*/
+}
+
+return model;
+}
+QSqlQueryModel* Voyage::trier(string par,string ordre)
+{
+    QSqlQueryModel * model=new QSqlQueryModel();
+    if (par=="Reference ")
+    {
+      if (ordre=="croissant ")
+      {
+          model->setQuery("SELECT* FROM voyage ORDER BY reference ASC");
+      }
+      else
+      {
+          model->setQuery("SELECT* FROM voyage ORDER BY reference DESC");
+      }
+    }
+    if (par=="Date")
+    {
+        if (ordre=="croissant ")
+        {
+            model->setQuery("SELECT* FROM voyage ORDER BY date_d ASC");
+        }
+        else
+        {
+             model->setQuery("SELECT* FROM voyage ORDER BY date_d DESC");
+        }
+    }
+    return model;
+}
+
+
+void Voyage::exporter_excel(string choice)
+{
+    if (choice=="Tous les voyages ")
+    {QFile data("tous_les_voyages.csv");
+    if (data.open(QFile::WriteOnly)) {
+        QTextStream outTxt(&data);
+        QSqlQuery query;
+        bool firstLine=true;
+        query.prepare("SELECT * FROM voyage");
+        if(query.exec()){
+            while (query.next()) {
+                const QSqlRecord recrd= query.record();
+                if(firstLine){
+                   // for(int i=0;i<recrd.count();++i)
+                   //     outTxt << recrd.field(i) << ','; //Headers
+                }
+                firstLine=false;
+                outTxt << "\r\n";
+                for(int i=0;i<recrd.count();++i)
+                    outTxt << recrd.value(i).toString() << ',';
+            }
+        }
+        data.close();
+    }
+    }
+    else
+    {
+        QFile data("voyages_en_Retard.csv");
+            if (data.open(QFile::WriteOnly)) {
+                QTextStream outTxt(&data);
+                QSqlQuery query;
+                bool firstLine=true;
+                query.prepare("SELECT * FROM voyage WHERE etat LIKE 'en retard '");
+                if(query.exec()){
+                    while (query.next()) {
+                        const QSqlRecord recrd= query.record();
+                        if(firstLine){
+                           // for(int i=0;i<recrd.count();++i)
+                           //     outTxt << recrd.field(i) << ','; //Headers
+                        }
+                        firstLine=false;
+                        outTxt << "\r\n";
+                        for(int i=0;i<recrd.count();++i)
+                            outTxt << recrd.value(i).toString() << ',';
+                    }
+                }
+                data.close();
+    }
+}
+}
+QSqlQueryModel *Voyage::list_clients(QString val)
+{
+   QSqlQueryModel * model=new QSqlQueryModel();
+   model->setQuery("SELECT client_voyage.ref_voyage , client_voyage.id_client,client.nom FROM client_voyage FULL JOIN client ON client.id=client_voyage.id_client WHERE client_voyage.ref_voyage LIKE '"+val+"'");
+   return model;
+}
+
+int Voyage::nbrevoyage()
+{   int sum=0;
+    QSqlQuery query;
+    query.prepare("SELECT * FROM voyage ");
+
+    if (query.exec())
+    {
+        while (query.next())
+        {
+            sum++;
+        }
+    }
+     qDebug()<<sum;
+     return sum;
+
+}
+int Voyage::nbrevoyage_enretard()
+{
+    int sum=0;
+        QSqlQuery query;
+        query.prepare("SELECT * FROM voyage where etat LIKE 'en retard '");
+
+        if (query.exec())
+        {
+            while (query.next())
+            {
+                sum++;
+            }
+        }
+         qDebug()<<sum;
+         return sum;
+
+}
+int Voyage::nbrevoyage_termine()
+{
+    int sum=0;
+        QSqlQuery query;
+        query.prepare("SELECT * FROM voyage where etat LIKE 'termines'");
+
+        if (query.exec())
+        {
+            while (query.next())
+            {
+                sum++;
+            }
+        }
+         qDebug()<<sum;
+         return sum;
+}
+int Voyage::nbrevoyage_planifies()
+{
+    int sum=0;
+        QSqlQuery query;
+        query.prepare("SELECT * FROM voyage where etat LIKE 'planifies'");
+
+        if (query.exec())
+        {
+            while (query.next())
+            {
+                sum++;
+            }
+        }
+         qDebug()<<sum;
+         return sum;
+}

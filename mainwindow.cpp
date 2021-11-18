@@ -5,9 +5,8 @@
 #include  <QSqlQuery>
 #include <QTDebug>
 #include <QString>
-#include<QIntValidator>
-#include <QModelIndex>
 #include <QMessageBox>
+#include <QtPrintSupport/QPrinter>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -59,9 +58,6 @@ bool ok;
 void  MainWindow::on_tab_voyage_activated(const QModelIndex &index)
 {
      val=ui->tab_voyage->model()->data(index).toString();
-
-     int iindex =ui->tab_voyage->currentIndex().row();
-     QString l=QString::number(iindex);
      qDebug()<<val;
 
 }
@@ -93,7 +89,7 @@ void MainWindow::on_pushButton_modifier_clicked()
         query.prepare("select * from voyage where reference='"+val+"'  ");
 
       if (query.exec())
-         {  //modifier=true;
+         {
              while (query.next())
              {  //ui->pushButton_ok->setText("modifier");
                  ui->lineEdit_ref->setText(query.value(0).toString());
@@ -152,6 +148,9 @@ void MainWindow::on_pushButton_clicked()
     ui->lineEdit_matricule->clear();
     ui->dateEdit->setDate(Date);
     val="";
+     r=0;
+      ui->tab_voyage->setModel(V.afficher_voyage());
+      qDebug()<<r;
 }
 
 void MainWindow::on_pushButton_annuler_clicked()
@@ -160,4 +159,42 @@ void MainWindow::on_pushButton_annuler_clicked()
     ui->lineEdit_chauf->clear();
     ui->lineEdit_matricule->clear();
     ui->dateEdit->setDate(Date);
+}
+
+void MainWindow::on_pushButton_rechercher_clicked()
+{
+  Voyage V;
+  r=1;
+ui->tab_voyage->setModel(V.rechercher(ui->comboBox_choix->currentText().toStdString(),ui->lineEdit_val->text(),ui->comboBox_etat_2->currentText()));
+qDebug()<<r;
+ui->lineEdit_val->clear();
+ui->comboBox_choix->setCurrentText("Reference ");
+ui->comboBox_etat_2->setCurrentText("Tous");
+}
+
+void MainWindow::on_pushButton_trier_clicked()
+{
+    Voyage V;
+    r=1;
+    ui->tab_voyage->setModel(V.trier(ui->comboBox_Tpar->currentText().toStdString(),ui->comboBox_Tordre->currentText().toStdString()));
+    qDebug()<<r;
+}
+
+void MainWindow::on_pushButton_ok_2_clicked()
+{
+   Voyage v;
+  v.exporter_PDF(ui->comboBox_exporter->currentText().toStdString());
+}
+
+void MainWindow::on_pushButton_annuler_2_clicked()
+{
+  Voyage v;
+v.exporter_excel(ui->comboBox_exporter->currentText().toStdString());
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+   Voyage v;
+   ui->tableView->setModel(v.list_clients(ui->lineEdit->text()));
+   ui->lineEdit->clear();
 }

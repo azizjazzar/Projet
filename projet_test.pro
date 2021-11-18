@@ -2,6 +2,7 @@ QT       += core gui
 QT       += core gui sql
 QT += sql
 QT+=widgets
+QT += printsupport
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -21,11 +22,13 @@ SOURCES += \
     connexion.cpp \
     main.cpp \
     mainwindow.cpp \
+    piechartwidget.cpp \
     voyage.cpp
 
 HEADERS += \
     connexion.h \
     mainwindow.h \
+    piechartwidget.h \
     voyage.h
 
 FORMS += \

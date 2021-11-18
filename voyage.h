@@ -3,9 +3,12 @@
 #include <QString>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
-
-
-
+#include <iostream>
+using namespace std;
+#include <string>
+#include <QPainter>
+#include <QtPrintSupport/QPrinter>
+#include <QTextDocument>
 class Voyage
 {
 private:
@@ -24,8 +27,18 @@ public:
     bool modifier_voyage();
     bool supprimer_voyage(QString ref);
     QSqlQueryModel * afficher_voyage();
+    QSqlQueryModel *rechercher(string choix,QString v,QString etat_voyage);
+    QSqlQueryModel *trier(string par,string ordre);
+    void PrintTable( QPrinter* printer, QSqlQuery&  Query );
+    void exporter_PDF(string choice);
+    void exporter_excel(string choice);
+    QSqlQueryModel *list_clients(QString val);
     QString get_ref();
     void set_ref(QString r);
+    int nbrevoyage();
+    int nbrevoyage_enretard();
+    int nbrevoyage_termine();
+    int nbrevoyage_planifies();
 };
 
 #endif // VOYAGE_H
