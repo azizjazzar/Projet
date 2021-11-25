@@ -150,15 +150,31 @@ void MainWindow::on_pushButton_2_clicked()
     chartview->setRenderHint(QPainter::Antialiasing);
     chartview->setParent(ui->frame);
     chartview->setFixedSize(ui->frame->size());
-    QPrinter printer(QPrinter::ScreenResolution);
-        printer.setOutputFormat(QPrinter::PdfFormat);
-        printer.setFullPage(true);
-        printer.setPageOrientation(QPageLayout::Landscape);
-        printer.setOutputFileName("C:/Users/zied loukil/OneDrive/Documents/maquette/fileName.pdf");
-        printer.setPageMargins(QMarginsF(0,0,0,0), QPageLayout::Point);
-        printer.setPageSize(QPageSize(QSizeF(400,700), QPageSize::Point));
+    QFrame *widget=ui->frame;
+    QPixmap pix(widget->size());
+      QPainter painter(&pix);
+      widget->render(&painter);
+      painter.end();
+      QPrinter printer(QPrinter::HighResolution);
+      printer.setOrientation(QPrinter::Landscape);
+      printer.setOutputFormat(QPrinter::PdfFormat);
+      printer.setPaperSize(QPrinter::A4);
+      printer.setOutputFileName("F:/Qt/maquette/statistic.pdf");
 
-        QPainter painter(&printer);
-        painter.setRenderHint(QPainter::Antialiasing);
-        (*chartview->scene()).render(&painter);
+      painter.begin(&printer);
+      double xscale = printer.pageRect().width() / double(pix.width());
+      double yscale = printer.pageRect().height() / double(pix.height());
+      double scale = qMin(xscale, yscale);
+      painter.translate(printer.paperRect().x() + printer.pageRect().width() / 2,
+                        printer.paperRect().y() + printer.pageRect().height() / 2);
+      painter.scale(scale, scale);
+      painter.translate(-widget->width() / 2, -widget->height() / 2);
+      painter.drawPixmap(0, 0, pix);
+
+    QTextDocument doc;
+
+    doc.setHtml("");
+    doc.drawContents(&painter);
+
+      painter.end();
 }

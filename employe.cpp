@@ -219,7 +219,7 @@ QSqlQueryModel * employe::emploi()
 {
     QSqlQueryModel * model=new QSqlQueryModel();
     QSqlQuery query;
-    query.prepare("SELECT voyage.heure_depart,voyage.heure_arrive,voyage.matricule FROM voyage WHERE cin_chaufeur= :cin AND heure_depart >= :date order by heure_depart");
+    query.prepare("SELECT voyage.depart,voyage.heure_depart,voyage.heure_arrive,voyage.destination,voyage.matricule FROM voyage WHERE cin_chaufeur= :cin AND heure_depart >= :date order by heure_depart");
     QDate d=d.currentDate();
     query.bindValue(":date",d);
     query.bindValue(":cin",CIN);
