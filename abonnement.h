@@ -28,7 +28,7 @@ public:
     bool set_prix(QString,int);
     //bool supprimer_abonnement(QString i);
     QSqlQueryModel * afficher_abonnement();
-    QDateTime GetDateFin(QString);
+    QDate GetDateFin(QString);
     QSqlQueryModel * Rechercher(QString);
     QSqlQueryModel * TrierDuree();
     QSqlQueryModel * TrierPrix();

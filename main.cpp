@@ -2,6 +2,7 @@
 #include <QApplication>
 #include <QMessageBox>
 #include "connection.h"
+#include <ui_mainwindow.h>
 
 int main(int argc, char *argv[])
 {

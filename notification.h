@@ -2,17 +2,25 @@
 #define NOTIFICATION_H
 #include <QString>
 #include <QDateTime>
+#include <QSqlQuery>
+#include <QSqlQueryModel>
+#include <QDate>
+#include <QTime>
+#include <ui_mainwindow.h>
 
-class Notification
+class ActiveAb
 {
 private:
-    int cin;
-    QString Nom;
-    QDateTime DateFin;
+    QString cin;
+    QString type;
+    QString DateStart;
+    QString DateFin;
 
 
 public:
-    Notification();
+    ActiveAb();
+    ActiveAb(QString,QString,QString,QString);
+    void SetDateStart(QString,QString);
 };
 
 #endif // NOTIFICATION_H

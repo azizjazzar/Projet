@@ -1,4 +1,5 @@
 #include "abonnement.h"
+#include <ui_mainwindow.h>
 
 abonnement::abonnement()
 {
@@ -100,19 +101,19 @@ bool abonnement::modifier_abonnement(QString A,QString B,int C)//Ui::MainWindow 
     return query.exec();
 
 }
-QDateTime abonnement::GetDateFin(QString Du)
+QDate abonnement::GetDateFin(QString Du)
 {
-    QDateTime DateAct = QDateTime::currentDateTime();
-    QString format = "yyyy/MM/dd HH:mm:ss";
-    QString DureeF = "0000/"+Du+" 00:00:00";
-    QDateTime Duree = QDateTime::fromString(DureeF,format);
+    QDate DateAct = QDate::currentDate();
+    /*QString format = "yyyy/MM/dd ";
+    QString DureeF = "0000/"+Du;
+    QDate Duree = QDate::fromString(DureeF,format);*/
     QString M1 = Du.at(1);
     QString M2 = Du.at(2);
     int M =  (M1+M2).toInt();
     QString D1 = Du.at(4);
     QString D2 = Du.at(5);
     int D = (D1+D2).toInt();
-    QDateTime DateFin = DateAct.addMonths(M).addDays(D);
+    QDate DateFin = DateAct.addMonths(M).addDays(D);
     return DateFin;
 }
 
