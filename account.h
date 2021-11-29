@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "employe.h"
+#include "arduino.h"
 namespace Ui {
 class account;
 }
@@ -17,11 +18,15 @@ public:
     void set(employe a);
 
 private slots:
+    void update_label();
 
 
 private:
     Ui::account *ui;
     employe e;
+    arduino a;
+    QByteArray data;
+    bool valid=false;
 };
 
 #endif // ACCOUNT_H

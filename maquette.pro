@@ -7,6 +7,7 @@ CONFIG += c++11
 QT += sql
 QT += core gui charts
 QT += printsupport
+QT +=core gui serialport
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -21,6 +22,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     account.cpp \
+    arduino.cpp \
     connection.cpp \
     dialog.cpp \
     employe.cpp \
@@ -29,6 +31,7 @@ SOURCES += \
 
 HEADERS += \
     account.h \
+    arduino.h \
     connection.h \
     dialog.h \
     employe.h \

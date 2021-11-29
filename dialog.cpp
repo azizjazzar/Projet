@@ -3,6 +3,8 @@
 #include "employe.h"
 #include "mainwindow.h"
 #include "account.h"
+#include "arduino.h"
+#include <QMessageBox>
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog)
@@ -31,7 +33,13 @@ void Dialog::on_pushButton_clicked()
     {
         hide();
         a.set(e);
-        a.show();
+        a.show();       
+    }
+    else
+    {
+        QMessageBox::critical(nullptr,QObject::tr("Access denied!!!"),QObject::tr("Invalid login or/and password."),QMessageBox::Retry);
+        ui->lineEdit->setText("");
+        ui->lineEdit_2->setText("");
     }
 }
 

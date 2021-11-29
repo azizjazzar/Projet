@@ -71,8 +71,9 @@ void MainWindow::on_pushButton_ajout_clicked()
    QString login=ui->ajout_login->text();
    QString password=ui->ajout_password->text();
    employe e(nom,prenom,date,CIN,num,Email,role,login,password);
-   bool test=e.ajouter();
-   /*if(test)
+   e.ajouter();
+   /*bool test=e.ajouter();
+   if(test)
        QMessageBox::information(nullptr,QObject::tr("ok"),QObject::tr(("ajout effectué.")));
    else
        QMessageBox::critical(nullptr,QObject::tr("not ok"),QObject::tr(("ajout non effectué.")));*/
@@ -159,9 +160,11 @@ void MainWindow::on_pushButton_2_clicked()
       printer.setOrientation(QPrinter::Landscape);
       printer.setOutputFormat(QPrinter::PdfFormat);
       printer.setPaperSize(QPrinter::A4);
-      printer.setOutputFileName("F:/Qt/maquette/statistic.pdf");
+      const QString &string=ui->lineEdit->text()+"/statistique.pdf";
+      printer.setOutputFileName(string);
 
-      painter.begin(&printer);
+      if(painter.begin(&printer))
+      {
       double xscale = printer.pageRect().width() / double(pix.width());
       double yscale = printer.pageRect().height() / double(pix.height());
       double scale = qMin(xscale, yscale);
@@ -177,4 +180,13 @@ void MainWindow::on_pushButton_2_clicked()
     doc.drawContents(&painter);
 
       painter.end();
+      }
+      else
+          QMessageBox::critical(nullptr,QObject::tr("Operation failed!!!"),QObject::tr("Invalid file destination."),QMessageBox::Retry);
+      ui->lineEdit->setText("");
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    ui->lineEdit->setText("C:/Users/zied loukil/OneDrive/Documents/maquette");
 }
