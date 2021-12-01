@@ -628,6 +628,19 @@
        </item>
       </widget>
      </widget>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>240</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
      <zorder>groupBox</zorder>
      <zorder>groupBox_2</zorder>
      <zorder>lineEdit_ref</zorder>
@@ -643,6 +656,7 @@
      <zorder>label_harriveprevu</zorder>
      <zorder>label_ref</zorder>
      <zorder>groupBox_4</zorder>
+     <zorder>pushButton_3</zorder>
     </widget>
     <widget class="QWidget" name="exporter">
      <attribute name="title">

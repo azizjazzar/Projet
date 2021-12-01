@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "voyage.h"
 #include <QString>
+#include "arduino.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -48,11 +49,15 @@ private slots:
 
    void on_pushButton_2_clicked();
 
+
+
 private:
     Ui::MainWindow *ui;
     Voyage V;
     QString val;
     int r=0;
+    QByteArray data; // variable contenant les données reçues
+    Arduino A; // objet temporaire
 
 };
 #endif // MAINWINDOW_H

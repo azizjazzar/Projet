@@ -39,6 +39,8 @@ public:
     int nbrevoyage_enretard();
     int nbrevoyage_termine();
     int nbrevoyage_planifies();
+
+
 };
 
 #endif // VOYAGE_H

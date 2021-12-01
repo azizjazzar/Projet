@@ -182,7 +182,68 @@ QSqlQueryModel* Voyage::trier(string par,string ordre)
     return model;
 }
 
+void Voyage::PrintTable( QPrinter* printer, QSqlQuery&  Query )
+{
+    QString strStream;
+      QTextStream out(&strStream);
 
+      const int rowCount = Query.size();
+      const int columnCount = Query.record().count();
+
+      out <<  "<html>\n"
+          "<head>\n"
+          "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+          <<  QString("<title>%1</title>\n").arg("TITLE OF TABLE")
+          <<  "</head>\n"
+          "<body bgcolor=#ffffff link=#5000A0>\n"
+          "<table border=1 cellspacing=0 cellpadding=2>\n";
+
+      // headers
+      out << "<thead><tr bgcolor=#f0f0f0>";
+      for (int column = 0; column < columnCount; column++)
+        out << QString("<th>%1</th>").arg(Query.record().fieldName(column));
+      out << "</tr></thead>\n";
+
+      while (Query.next()) {
+        out << "<tr>";
+        for (int column = 0; column < columnCount; column++) {
+          QString data = Query.value(column).toString();
+          out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+        }
+        out << "</tr>\n";
+      }
+
+      out <<  "</table>\n"
+          "</body>\n"
+          "</html>\n";
+
+      QTextDocument document;
+      document.setHtml(strStream);
+      document.print(printer);
+}
+void Voyage::exporter_PDF(string choice)
+{
+
+     QPrinter printer(QPrinter::HighResolution);
+     printer.setOrientation(QPrinter::Portrait);
+     printer.setPageSize(QPrinter::A4);
+     printer.setOutputFormat(QPrinter::PdfFormat);
+    if (choice=="Tous les voyages ")
+     printer.setOutputFileName("tous_les_voyages.pdf");
+    else
+     printer.setOutputFileName("voyages_en_Retard.pdf");
+    QPrintDialog dlg(&printer, 0);
+   // if(dlg.exec() == QDialog::Accepted) {
+     QSqlQuery query;
+     if (choice=="Tous les voyages ")
+     query.prepare("SELECT * from voyage");
+     else
+     query.prepare("SELECT * FROM voyage WHERE etat LIKE 'en retard '");
+     query.exec();
+     PrintTable(&printer, query);
+  //  }
+
+}
 void Voyage::exporter_excel(string choice)
 {
     if (choice=="Tous les voyages ")
@@ -305,3 +366,5 @@ int Voyage::nbrevoyage_planifies()
          qDebug()<<sum;
          return sum;
 }
+
+
