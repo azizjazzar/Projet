@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
         {
         MainWindow w;
         w.show();
+        w.setFixedSize(1200,850);
         QMessageBox msgBox;
 
         return a.exec();

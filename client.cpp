@@ -94,14 +94,14 @@ bool Client::ajouter()
 {
 QSqlQuery query;
 QDate datecurent=QDate::currentDate();
-query.prepare("insert into client (id,nom,prenom,genre,adresse,datenaiss) values (:id,:nom,:prenom,:genre,:adresse,TO_DATE(:datenaiss, 'DD/MM/YYYY'),TO_DATE(:daten_enrg, 'DD/MM/YYYY'))");
+query.prepare("insert into client (id,nom,prenom,genre,adresse,datenaiss,date_enrg) values (:id,:nom,:prenom,:genre,:adresse,TO_DATE(:datenaiss, 'DD/MM/YYYY'),TO_DATE(:date_enrg, 'DD/MM/YYYY'))");
 query.bindValue(":id",id);
 query.bindValue(":nom",nom);
 query.bindValue(":prenom",prenom);
 query.bindValue(":genre",genre);
 query.bindValue(":adresse",adresse);
 query.bindValue(":datenaiss",date_nais);
-query.bindValue(":date_enrg",date_enrg);
+query.bindValue(":date_enrg",datecurent.toString("dd/MM/yyyy"));
 return query.exec();
 }
 QSqlQueryModel *Client::afficher()

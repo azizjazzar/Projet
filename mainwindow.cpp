@@ -13,6 +13,9 @@
 #include <QBarSet>
 #include <QBarSeries>
 #include <QPointF>
+#include <QtPrintSupport/QPrinter>
+#include <QtPrintSupport/QPrintDialog>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -26,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->calendarWidget->hide();
     ui->fonctionaliteframe->hide();
     ui->Client_frame->hide();
+    ui->tableView->setModel(c.afficher());
     QDate datecurent=QDate::currentDate();
     QDate datelundi;
     QDate datemardi;
@@ -108,7 +112,7 @@ MainWindow::MainWindow(QWidget *parent)
            chartt->setAnimationOptions(QChart::SeriesAnimations);
 
            QStringList categories;
-              categories << "Lundi" << "Mardi" << "Mercredi" << "Jeudi" <<"Vendredi"<<"Samedi";
+              categories << "Lundi" << "Mardi" << "Mercredi" << "Jeudi" <<"Vendredi";
               QBarCategoryAxis *axisX = new QBarCategoryAxis();
               axisX->append(categories);
               chartt->addAxis(axisX, Qt::AlignBottom);
@@ -149,6 +153,7 @@ MainWindow::MainWindow(QWidget *parent)
        QChartView *chartview = new QChartView(chart);
         chartview->chart()->setTheme(QChart::ChartThemeDark);
         chart->setBackgroundBrush(QBrush(QColor(47, 43, 63)));
+        chart->setAnimationOptions(QChart::AllAnimations);
 
        chartview->setParent(ui->horizontalFrame);
        chartview->resize(430,400);
@@ -181,7 +186,7 @@ void MainWindow::on_accueil_clicked()
 {
         ui->fonctionaliteframe->hide();
            ui->Client_frame->hide();
-
+        ui->widget->show();
 
 }
 
@@ -219,6 +224,7 @@ void MainWindow::on_Fonctionalite_clicked()
      ui->Client_frame->hide();
      ui->fonctionaliteframe->show();
      ui->comboBox_2->setModel(c.autoremplisage());
+      ui->widget->hide();
 }
 //crud
 
@@ -431,5 +437,59 @@ void MainWindow::on_pushButton_5_clicked()
                msgBox.setText("Probléme au niveau de fichier");
 
    msgBox.exec();
+
+}
+void MainWindow::on_pushButton_7_clicked()
+{
+    QString strStream;
+                              QTextStream out(&strStream); //eureur
+
+                                const int rowCount = ui->tableView->model()->rowCount();
+                                const int columnCount = ui->tableView->model()->columnCount();
+
+                                out <<  "<html>\n"
+                                    "<head>\n"
+                                    "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+                                    <<  QString("<title>%1</title>\n").arg("strTitle")
+                                    <<  "</head>\n"
+                                    "<body bgcolor=#ffffff link=#5000A0>\n"
+
+                                   //     "<align='right'> " << datefich << "</align>"
+                                    "<center> <H1>Liste des clients </H1></br></br><table border=1 cellspacing=0 cellpadding=2>\n";
+
+                                // headers
+                                out << "<thead><tr bgcolor=#f0f0f0> <th>Numero</th>";
+                                for (int column = 0; column < columnCount; column++)
+                                    if (!ui->tableView->isColumnHidden(column))
+                                        out << QString("<th>%1</th>").arg(ui->tableView->model()->headerData(column, Qt::Horizontal).toString());
+                                out << "</tr></thead>\n";
+
+                                // data table
+                                for (int row = 0; row < rowCount; row++) {
+                                    out << "<tr> <td bkcolor=0>" << row+1 <<"</td>";
+                                    for (int column = 0 ; column < columnCount; column++) {
+                                        if (!ui->tableView->isColumnHidden(column)) {
+                                            QString data = ui->tableView->model()->data(ui->tableView->model()->index(row, column)).toString().simplified();
+                                            out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+                                        }
+                                    }
+                                    out << "</tr>\n";
+                                }
+                                out <<  "</table> </center>\n"
+                                    "</body>\n"
+                                    "</html>\n";
+
+                          QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Sauvegarder en PDF", QString(), "*.pdf");
+                            if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append(".pdf"); }
+
+                           QPrinter printer (QPrinter::PrinterResolution);
+                            printer.setOutputFormat(QPrinter::PdfFormat);
+                           printer.setPaperSize(QPrinter::A4);
+                          printer.setOutputFileName(fileName);
+
+                           QTextDocument  doc;
+                            doc.setHtml(strStream);
+                            doc.setPageSize(printer.pageRect().size()); // This is necessary if you want to hide the page number
+                            doc.print(&printer);
 
 }
