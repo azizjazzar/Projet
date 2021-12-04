@@ -1,5 +1,5 @@
 #include "zied_mainwindow.h"
-#include "ui_mainwindow.h"
+#include "ui_zied_mainwindow.h"
 #include "zied_employe.h"
 #include <QMessageBox>
 #include <QIntValidator>

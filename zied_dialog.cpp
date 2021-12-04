@@ -1,5 +1,5 @@
 #include "zied_dialog.h"
-#include "ui_dialog.h"
+#include "ui_zied_dialog.h"
 #include "zied_employe.h"
 #include "zied_mainwindow.h"
 #include "zied_account.h"
