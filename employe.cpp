@@ -219,7 +219,7 @@ QSqlQueryModel * employe::emploi()
 {
     QSqlQueryModel * model=new QSqlQueryModel();
     QSqlQuery query;
-    query.prepare("SELECT voyage.depart,voyage.heure_depart,voyage.heure_arrive,voyage.destination,voyage.matricule FROM voyage WHERE cin_chaufeur= :cin AND (extract(year from heure_arrive))= :year  AND (extract(month from heure_arrive))= :month AND (extract(day from heure_arrive))>= :day AND etat= :etat order by heure_depart");
+    query.prepare("SELECT voyage.depart,voyage.heure_depart,voyage.heure_arrivep,voyage.destination,voyage.matricule FROM voyage WHERE cin_chauffeur= :cin AND (extract(year from heure_arrivep))= :year  AND (extract(month from heure_arrivep))= :month AND (extract(day from heure_arrivep))>= :day AND etat= :etat order by heure_depart");
     QDate d=d.currentDate();
     int year,month,day;
     d.getDate(&year,&month,&day);

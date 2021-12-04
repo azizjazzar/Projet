@@ -10,12 +10,12 @@ void setup() {
 void loop() 
 {
   // put your main code here, to run repeatedly:0000000000000000000000000000000+
-        if((digitalRead(3)==HIGH)&&(data=='0'))
+        if((digitalRead(3)==HIGH)&&(data!='1'))
               {
                 Serial.write('1');
                 data='1';
               }
-        else if((digitalRead(3)==LOW)&&(data=='1'))
+        else if((digitalRead(3)==LOW)&&(data!='0'))
               {
                 Serial.write('0');
                 data='0';

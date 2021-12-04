@@ -67,7 +67,7 @@ void account::update_label()
         QSqlQuery query;
         QSqlQueryModel *model=new QSqlQueryModel();
         QString i;
-        query.prepare("select refrence from voyage where cin_chaufeur= :cin AND (extract(year from heure_arrive))= :year  AND (extract(month from heure_arrive))= :month AND (extract(day from heure_arrive))>= :day AND etat= :etat");
+        query.prepare("select reference from voyage where cin_chauffeur= :cin AND (extract(year from heure_arrivep))= :year  AND (extract(month from heure_arrivep))= :month AND (extract(day from heure_arrivep))>= :day AND etat= :etat order by heure_depart");
         QDate d=d.currentDate();
         int year,month,day;
         d.getDate(&year,&month,&day);
@@ -80,7 +80,7 @@ void account::update_label()
         {
             model->setQuery(query);
             i=model->data(model->index(0,0)).toString();
-            query.prepare("select heure_arrive from voyage where refrence= :ref order by heure_depart");
+            query.prepare("select heure_arrivep from voyage where reference= :ref order by heure_depart");
             query.bindValue(":ref",i);
             if((query.exec())&&(i!=""))
             {
@@ -89,7 +89,7 @@ void account::update_label()
                qDebug()<<d2<<">"<<model->data(model->index(0,0)).toDate();
                if(model->data(model->index(0,0)).toDateTime()<d2)
                {
-                   query.prepare("update voyage set etat= :etat,heure_arrivep= :date where refrence= :ref");
+                   query.prepare("update voyage set etat= :etat,heure_arrive= :date where reference= :ref");
                    query.bindValue(":etat","en retard");
                    query.bindValue(":date",d2);
                    query.bindValue(":ref",i);
@@ -98,7 +98,7 @@ void account::update_label()
                }
                else
                {
-                   query.prepare("update voyage set etat= :etat,heure_arrivep= :date where refrence= :ref");
+                   query.prepare("update voyage set etat= :etat,heure_arrive= :date where reference= :ref");
                    query.bindValue(":etat","terminner");
                    query.bindValue(":date",d);
                    query.bindValue(":ref",i);
@@ -106,8 +106,9 @@ void account::update_label()
                        QMessageBox::information(nullptr,QObject::tr("database updated"),QObject::tr("profile has been refreshed.\nyou arrived just on time."),QMessageBox::Ok);
                }
             }
-        }
+
         ui->tableView->setModel(e.emploi());
+        }
     }
 }
 
