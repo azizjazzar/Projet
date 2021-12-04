@@ -366,5 +366,3 @@ int Voyage::nbrevoyage_planifies()
          qDebug()<<sum;
          return sum;
 }
-
-
