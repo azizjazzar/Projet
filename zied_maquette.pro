@@ -21,26 +21,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    account.cpp \
-    arduino.cpp \
-    connection.cpp \
-    dialog.cpp \
-    employe.cpp \
+    zied_account.cpp \
+    zied_arduino.cpp \
+    zied_connection.cpp \
+    zied_dialog.cpp \
+    zied_employe.cpp \
     main.cpp \
-    mainwindow.cpp
+    zied_mainwindow.cpp
 
 HEADERS += \
-    account.h \
-    arduino.h \
-    connection.h \
-    dialog.h \
-    employe.h \
-    mainwindow.h
+    zied_account.h \
+    zied_arduino.h \
+    zied_connection.h \
+    zied_dialog.h \
+    zied_employe.h \
+    zied_mainwindow.h
 
 FORMS += \
-    account.ui \
-    dialog.ui \
-    mainwindow.ui
+    zied_account.ui \
+    zied_dialog.ui \
+    zied_mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -1,7 +1,7 @@
-#include "mainwindow.h"
-#include "employe.h"
-#include "connection.h"
-#include "dialog.h"
+#include "zied_mainwindow.h"
+#include "zied_employe.h"
+#include "zied_connection.h"
+#include "zied_dialog.h"
 #include <QApplication>
 #include <QMessageBox>
 #include <iostream>

@@ -1,6 +1,6 @@
-#include "mainwindow.h"
+#include "zied_mainwindow.h"
 #include "ui_mainwindow.h"
-#include "employe.h"
+#include "zied_employe.h"
 #include <QMessageBox>
 #include <QIntValidator>
 #include <QtCharts/QChartView>

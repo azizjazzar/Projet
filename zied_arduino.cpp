@@ -1,4 +1,4 @@
-#include "arduino.h"
+#include "zied_arduino.h"
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
 arduino::arduino()

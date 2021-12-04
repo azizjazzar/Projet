@@ -1,4 +1,4 @@
-#include "connection.h"
+#include "zied_connection.h"
 
 Connection::Connection()
 {

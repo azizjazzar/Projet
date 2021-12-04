@@ -1,4 +1,4 @@
-#include "employe.h"
+#include "zied_employe.h"
 #include <QSqlQuery>
 #include <QSqlQueryModel>
 #include <QVariant>

@@ -2,8 +2,8 @@
 #define ACCOUNT_H
 
 #include <QDialog>
-#include "employe.h"
-#include "arduino.h"
+#include "zied_employe.h"
+#include "zied_arduino.h"
 namespace Ui {
 class account;
 }

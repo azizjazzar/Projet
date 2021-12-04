@@ -2,8 +2,8 @@
 #define DIALOG_H
 
 #include <QDialog>
-#include "mainwindow.h"
-#include "account.h"
+#include "zied_mainwindow.h"
+#include "zied_account.h"
 namespace Ui {
 class Dialog;
 }

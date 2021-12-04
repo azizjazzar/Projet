@@ -7,7 +7,7 @@ using namespace std;
 #include <QSqlQuery>
 #include <QSqlQueryModel>
 #include <QString>
-#include "mainwindow.h"
+#include "zied_mainwindow.h"
 class employe
 {
 public:

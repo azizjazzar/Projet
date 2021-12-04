@@ -1,9 +1,9 @@
-#include "dialog.h"
+#include "zied_dialog.h"
 #include "ui_dialog.h"
-#include "employe.h"
-#include "mainwindow.h"
-#include "account.h"
-#include "arduino.h"
+#include "zied_employe.h"
+#include "zied_mainwindow.h"
+#include "zied_account.h"
+#include "zied_arduino.h"
 #include <QMessageBox>
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),

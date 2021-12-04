@@ -1,6 +1,6 @@
-#include "account.h"
+#include "zied_account.h"
 #include "ui_account.h"
-#include "employe.h"
+#include "zied_employe.h"
 #include <QMessageBox>
 #include <QDebug>
 account::account(QWidget *parent) :
