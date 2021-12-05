@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -113,26 +113,6 @@
        <property name="text">
         <string>Role:</string>
        </property>
-      </widget>
-      <widget class="QComboBox" name="ajout_role">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>350</y>
-         <width>171</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <item>
-        <property name="text">
-         <string>Responsable resourse humaine</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>chauffeur</string>
-        </property>
-       </item>
       </widget>
       <widget class="QLabel" name="label_5">
        <property name="geometry">
@@ -280,6 +260,34 @@
          <height>20</height>
         </rect>
        </property>
+      </widget>
+      <widget class="QComboBox" name="ajout_role">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>350</y>
+         <width>171</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="editable">
+        <bool>false</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>Responsable de plannification</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Responsable resourse humaine</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>chauffeur</string>
+        </property>
+       </item>
       </widget>
      </widget>
      <widget class="QGroupBox" name="groupBox_8">

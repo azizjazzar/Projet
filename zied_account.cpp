@@ -94,7 +94,11 @@ void account::update_label()
                    query.bindValue(":date",d2);
                    query.bindValue(":ref",i);
                    if(query.exec())
+                   {
+                       data="2";
                        QMessageBox::critical(nullptr,QObject::tr("database updated"),QObject::tr("profile has been refreshed.\nyou arrived a bit late."),QMessageBox::Cancel);
+                       a.write_to_arduino(data);
+                   }
                }
                else
                {
@@ -103,7 +107,11 @@ void account::update_label()
                    query.bindValue(":date",d);
                    query.bindValue(":ref",i);
                    if(query.exec())
+                   {
+                       data="3";
                        QMessageBox::information(nullptr,QObject::tr("database updated"),QObject::tr("profile has been refreshed.\nyou arrived just on time."),QMessageBox::Ok);
+                       a.write_to_arduino(data);
+                   }
                }
             }
 

@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "zied_mainwindow.h"
 #include "zied_account.h"
+#include "menu.h"
 namespace Ui {
 class Dialog;
 }
@@ -21,7 +22,7 @@ private slots:
 
 private:
     Ui::Dialog *ui;
-    MainWindow w;
+    menu m;
     account a;
 };
 

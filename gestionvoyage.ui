@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>gestionvoyage</class>
+ <widget class="QMainWindow" name="gestionvoyage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1260</width>
+    <height>688</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>gestionvoyage</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>610</y>
+      <width>101</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>actualiser</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../Desktop/s1/projet c++/61225.png</normaloff>../../Desktop/s1/projet c++/61225.png</iconset>
+    </property>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1241</width>
+      <height>371</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="voyage">
+     <attribute name="title">
+      <string> voyage  </string>
+     </attribute>
+     <widget class="QLineEdit" name="lineEdit_ref">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>20</y>
+        <width>191</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="maxLength">
+       <number>20</number>
+      </property>
+      <property name="placeholderText">
+       <string/>
+      </property>
+      <property name="cursorMoveStyle">
+       <enum>Qt::VisualMoveStyle</enum>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_harrive">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>170</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Heure d'arrivé</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_date">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>20</y>
+        <width>56</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Date</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>10</y>
+        <width>1171</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <widget class="QLabel" name="label_matricule">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>110</y>
+         <width>101</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Matricule de bus </string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>160</y>
+         <width>56</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Etat </string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox_etat">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>160</y>
+         <width>101</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>plannifier</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>en retard</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>terminner</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QPushButton" name="pushButton_ok">
+       <property name="geometry">
+        <rect>
+         <x>890</x>
+         <y>120</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ajouter</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_chauf">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>60</y>
+         <width>191</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="maxLength">
+        <number>8</number>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_matricule">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>110</y>
+         <width>191</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_modifierr">
+       <property name="geometry">
+        <rect>
+         <x>1010</x>
+         <y>120</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>modifier</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="dateEdit">
+       <property name="geometry">
+        <rect>
+         <x>679</x>
+         <y>10</y>
+         <width>101</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+       <property name="timeSpec">
+        <enum>Qt::LocalTime</enum>
+       </property>
+       <property name="date">
+        <date>
+         <year>2021</year>
+         <month>11</month>
+         <day>11</day>
+        </date>
+       </property>
+      </widget>
+      <widget class="QTimeEdit" name="timeEdit_depart">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>60</y>
+         <width>101</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="calendarPopup">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QTimeEdit" name="timeEdit_arrive1">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>110</y>
+         <width>101</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QTimeEdit" name="timeEdit_arrive2">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>160</y>
+         <width>101</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QComboBox" name="comboBox_ligne">
+      <property name="geometry">
+       <rect>
+        <x>1030</x>
+        <y>20</y>
+        <width>141</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Passage-tunis</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Slimen_kahya-Manouba</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Beb_saadoun-tunis</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="label_chauf1">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>70</y>
+        <width>111</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cin du chauffeur</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="margin">
+       <number>2</number>
+      </property>
+      <property name="indent">
+       <number>-1</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_a">
+      <property name="geometry">
+       <rect>
+        <x>940</x>
+        <y>70</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>destination</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_hdepart">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>70</y>
+        <width>101</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Heure de depart </string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_annuler">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>170</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Annuler</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>230</y>
+        <width>531</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Rechercher un voyage</string>
+      </property>
+      <widget class="QPushButton" name="pushButton_rechercher">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>40</y>
+         <width>101</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Rechercher</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../Desktop/s1/projet c++/1545.png</normaloff>../../Desktop/s1/projet c++/1545.png</iconset>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>30</y>
+         <width>41</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>par :</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox_choix">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>30</y>
+         <width>111</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Reference </string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Cin chauffeur</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_val">
+       <property name="geometry">
+        <rect>
+         <x>202</x>
+         <y>30</y>
+         <width>141</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox_etat_2">
+       <property name="geometry">
+        <rect>
+         <x>200</x>
+         <y>70</y>
+         <width>141</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Tous</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>terminner</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>en retard</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>plannifier</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>70</y>
+         <width>56</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>etat</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QComboBox" name="comboBox_dest">
+      <property name="geometry">
+       <rect>
+        <x>1030</x>
+        <y>70</y>
+        <width>141</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Passage-tunis</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Slimen_kahya-Manouba</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Beb_saadoun-tunis</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="label_de">
+      <property name="geometry">
+       <rect>
+        <x>940</x>
+        <y>20</y>
+        <width>56</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Depart</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_harriveprevu">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>120</y>
+        <width>121</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Heure d'arrivé prevu </string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_ref">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>20</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Reference du voyage </string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_4">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>230</y>
+        <width>531</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Trier</string>
+      </property>
+      <widget class="QPushButton" name="pushButton_trier">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>30</y>
+         <width>93</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Trier</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../Desktop/s1/projet c++/130898.png</normaloff>../../Desktop/s1/projet c++/130898.png</iconset>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox_Tordre">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>40</y>
+         <width>101</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>croissant </string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>decroissant </string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_9">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>40</y>
+         <width>41</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>par :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_10">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>40</y>
+         <width>56</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ordre :</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox_Tpar">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>40</y>
+         <width>111</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Reference </string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Date</string>
+        </property>
+       </item>
+      </widget>
+     </widget>
+     <zorder>groupBox</zorder>
+     <zorder>groupBox_2</zorder>
+     <zorder>lineEdit_ref</zorder>
+     <zorder>label_harrive</zorder>
+     <zorder>label_date</zorder>
+     <zorder>comboBox_ligne</zorder>
+     <zorder>label_chauf1</zorder>
+     <zorder>label_a</zorder>
+     <zorder>label_hdepart</zorder>
+     <zorder>pushButton_annuler</zorder>
+     <zorder>comboBox_dest</zorder>
+     <zorder>label_de</zorder>
+     <zorder>label_harriveprevu</zorder>
+     <zorder>label_ref</zorder>
+     <zorder>groupBox_4</zorder>
+    </widget>
+    <widget class="QWidget" name="exporter">
+     <attribute name="title">
+      <string>Exporter</string>
+     </attribute>
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>40</y>
+        <width>671</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <widget class="QPushButton" name="pushButton_ok_2">
+       <property name="geometry">
+        <rect>
+         <x>500</x>
+         <y>70</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>PDF</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_annuler_2">
+       <property name="geometry">
+        <rect>
+         <x>500</x>
+         <y>120</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>excel</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_25">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>90</y>
+         <width>231</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Exporter :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox_exporter">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>90</y>
+         <width>161</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Tous les voyages </string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Les voyages en retard </string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_26">
+       <property name="geometry">
+        <rect>
+         <x>380</x>
+         <y>90</y>
+         <width>111</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;En fichier :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="statistique">
+     <attribute name="title">
+      <string>Statistique</string>
+     </attribute>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="PieChartWidget" name="widget" native="true"/>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>voyageurs par voyage</string>
+     </attribute>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>80</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Refference du voyage&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>130</y>
+        <width>141</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>190</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>OK</string>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tableView">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>30</y>
+        <width>401</width>
+        <height>261</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton_supprimer">
+    <property name="geometry">
+     <rect>
+      <x>1100</x>
+      <y>600</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Supprimer</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../Desktop/s1/projet c++/1214428.png</normaloff>../../Desktop/s1/projet c++/1214428.png</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_modifier">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>600</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Modifier </string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../Desktop/s1/projet c++/84380.png</normaloff>../../Desktop/s1/projet c++/84380.png</iconset>
+    </property>
+   </widget>
+   <widget class="QTableView" name="tab_voyage">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>380</y>
+      <width>1241</width>
+      <height>211</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1260</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PieChartWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">piechartwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

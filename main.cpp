@@ -2,6 +2,7 @@
 #include "zied_employe.h"
 #include "zied_connection.h"
 #include "zied_dialog.h"
+#include "gestionvoyage.h"
 #include <QApplication>
 #include <QMessageBox>
 #include <iostream>

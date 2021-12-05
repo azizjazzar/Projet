@@ -27,13 +27,14 @@ void Dialog::on_pushButton_clicked()
         hide();
         a.set(e);
         a.show();
-        w.show();
+        m.set(e);
+        m.show();
     }
     else if(e.account(ui->lineEdit->text(),ui->lineEdit_2->text()))
     {
         hide();
         a.set(e);
-        a.show();       
+        a.show();
     }
     else
     {

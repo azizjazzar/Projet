@@ -110,10 +110,10 @@ bool employe::access(QString a, QString b)
 {
     QSqlQuery query,query2;
     query2.prepare("SELECT * FROM employe");
-    query.prepare("SELECT * FROM employe WHERE login=? AND mot_de_passe=? AND role=?");
+    query.prepare("SELECT * FROM employe WHERE login=? AND mot_de_passe=? AND role<>?");
     query.addBindValue(a);
     query.addBindValue(b);
-    QString s("Responsable resourse humaine");
+    QString s("chauffeur");
     query.addBindValue(s);
     query.exec();
     query2.exec();
