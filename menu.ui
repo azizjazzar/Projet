@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>menu</class>
+ <widget class="QMainWindow" name="menu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow#menu
+{
+background-color:rgb(47, 43, 63);
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>40</y>
+      <width>221</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Smart_Station:</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>130</y>
+      <width>201</width>
+      <height>371</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="styleSheet">
+        <string notr="true">QPushButton#pushButton
+{
+border:none;
+font: 13pt &quot;Microsoft YaHei&quot;;
+color:rgb(159, 159, 159);
+}
+QPushButton#pushButton:hover
+{
+font: 14pt &quot;Microsoft YaHei&quot;;
+border-left:10px solid rgb(255, 255, 255);
+border-right:10px solid rgb(255, 255, 255);
+color:rgb(255, 255, 255;)
+}
+QPushButton#pushButton:pressed
+{
+font: 13pt &quot;Microsoft YaHei&quot;;
+}
+
+</string>
+       </property>
+       <property name="text">
+        <string>employés</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="styleSheet">
+        <string notr="true">QPushButton#pushButton_3
+{
+border:none;
+font: 13pt &quot;Microsoft YaHei&quot;;
+color:rgb(159, 159, 159);
+}
+QPushButton#pushButton_3:hover
+{
+font: 14pt &quot;Microsoft YaHei&quot;;
+border-left:10px solid rgb(255, 255, 255);
+border-right:10px solid rgb(255, 255, 255);
+color:rgb(255, 255, 255;)
+}
+QPushButton#pushButton_3:pressed
+{
+font: 13pt &quot;Microsoft YaHei&quot;;
+}
+
+</string>
+       </property>
+       <property name="text">
+        <string>client</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="styleSheet">
+        <string notr="true">QPushButton#pushButton_2
+{
+border:none;
+font: 13pt &quot;Microsoft YaHei&quot;;
+color:rgb(159, 159, 159);
+}
+QPushButton#pushButton_2:hover
+{
+font: 14pt &quot;Microsoft YaHei&quot;;
+border-left:10px solid rgb(255, 255, 255);
+border-right:10px solid rgb(255, 255, 255);
+color:rgb(255, 255, 255;)
+}
+QPushButton#pushButton_2:pressed
+{
+font: 13pt &quot;Microsoft YaHei&quot;;
+}
+
+</string>
+       </property>
+       <property name="text">
+        <string>voyages</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="styleSheet">
+        <string notr="true">QPushButton#pushButton_4
+{
+border:none;
+font: 13pt &quot;Microsoft YaHei&quot;;
+color:rgb(159, 159, 159);
+}
+QPushButton#pushButton_4:hover
+{
+font: 14pt &quot;Microsoft YaHei&quot;;
+border-left:10px solid rgb(255, 255, 255);
+border-right:10px solid rgb(255, 255, 255);
+color:rgb(255, 255, 255;)
+
+}
+QPushButton#pushButton_4:pressed
+{
+font: 13pt &quot;Microsoft YaHei&quot;;
+}
+
+</string>
+       </property>
+       <property name="text">
+        <string>abonnement</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_5">
+       <property name="styleSheet">
+        <string notr="true">QPushButton#pushButton_5
+{
+border:none;
+font: 13pt &quot;Microsoft YaHei&quot;;
+color:rgb(159, 159, 159);
+}
+QPushButton#pushButton_5:hover
+{
+font: 14pt &quot;Microsoft YaHei&quot;;
+border-left:10px solid rgb(255, 255, 255);
+border-right:10px solid rgb(255, 255, 255);
+color:rgb(255, 255, 255;)
+}
+QPushButton#pushButton_5:pressed
+{
+font: 13pt &quot;Microsoft YaHei&quot;;
+}
+
+</string>
+       </property>
+       <property name="text">
+        <string>facture</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
